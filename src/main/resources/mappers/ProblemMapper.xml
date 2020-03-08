@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace存放映射文件的路径，指动态代理方式的接口全类名-->
+<mapper namespace="cn.edu.buaa.judger.mapper.ProblemMapper">
+
+    <resultMap id="ProblemResultMap" type="Problem">
+        <id property="problemId" column="problem_id"></id>
+        <result property="timeLimit" column="time_limit"></result>
+        <result property="memoryLimit" column="memory_limit"></result>
+        <result property="code" column="code"></result>
+    </resultMap>
+
+    <select id="getProblemById" parameterType="long" resultMap="ProblemResultMap" useCache="true">
+        SELECT * FROM problems WHERE problem_id = #{problemId};
+    </select>
+</mapper>

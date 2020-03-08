@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace存放映射文件的路径，指动态代理方式的接口全类名-->
+<mapper namespace="cn.edu.buaa.judger.mapper.CheckpointMapper">
+
+    <resultMap id="CheckpointResultMap" type="Checkpoint">
+        <id property="checkpointId" column="checkpoint_id"></id>
+        <result property="problemId" column="problem_id"></result>
+        <result property="checkpointNumber" column="checkpoint_number"></result>
+        <result property="input" column="checkpoint_input"></result>
+        <result property="output" column="checkpoint_output"></result>
+    </resultMap>
+
+    <select id="getProblemCheckpoints" parameterType="long" resultMap="CheckpointResultMap" useCache="true">
+        SELECT * FROM problem_checkpoints WHERE problem_id = #{problemId} ORDER BY checkpoint_number ASC;
+    </select>
+
+</mapper>

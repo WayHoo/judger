@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace存放映射文件的路径，指动态代理方式的接口全类名-->
+<mapper namespace="cn.edu.buaa.judger.mapper.JudgeResultMapper">
+
+    <resultMap id="JudgeResultMap" type="Problem">
+        <id property="judgeResultId" column="judge_result_id"></id>
+        <result property="judgeResultSlug" column="judge_result_slug"></result>
+        <result property="judgeResultName" column="judge_result_name"></result>
+    </resultMap>
+
+    <select id="getJudgeResultBySlug" parameterType="String" resultMap="JudgeResultMap" useCache="true">
+        SELECT * FROM judge_results WHERE judge_result_slug = #{judgeResultSlug};
+    </select>
+</mapper>
